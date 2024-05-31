@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            background-image: linear-gradient(to right,rgba(216, 170, 18, 0.945),navy);
+            overflow: hidden;
+            height: 100%;
+            margin: 10px;
+            text-align: center;
+            justify-content: center;
+            display: flex;
+        }
+
+        .container {
+            margin-top: 60px;
+            background-color: burlywood;
+            position: absolute;
+            width: 350px;
+            padding: 5px;
+            height: 500px;
+            /* border-radius: 20px; */
+            border-style: inset;
+            border-color: gray;
+            border-width: 10px;
+        
+        }
+
+        .main {
+            width: 80%;
+            height: 85%;
+            margin: 0 auto;
+            padding: 5px;
+
+        }
+
+        #display {
+            width: 90%;
+            height: 15%;
+            font-size: 50px;
+            text-align: end;
+            margin-top: 5px;
+        }
+
+        .btn {
+            border: 0;
+            outline: 0;
+            width: 21%;
+            height: 65px;
+            margin: 3px;
+            margin-top: 5px;
+            border-radius: 10px;
+            box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1),5px 5px 15px rgba(0, 0, 0, 0.2);
+            font-weight: 100;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: gray;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: white;
+
+        }
+
+        .btn:hover{
+            background-color: green;
+        }
+        .del_btn {
+            width: 130px;
+            background-color: darkorange;
+            border: 0;
+            outline: 0;
+            height: 65px;
+            margin: 3px;
+            margin-top: 5px;
+            border-radius: 10px;
+            box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1),5px 5px 15px rgba(0, 0, 0, 0.2);
+            font-weight: 100;
+            font-size: 30px;
+            cursor: pointer;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: white;
+        }
+
+        
+        .eq_btn {
+            width: 130px;
+            background-color: darkorange;
+            border: 0;
+            outline: 0;
+            height: 65px;
+            margin: 3px;
+            margin-top: 5px;
+            border-radius: 10px;
+            box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1),5px 5px 15px rgba(0, 0, 0, 0.2);
+            font-weight: 100;
+            font-size: 30px;
+            cursor: pointer;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: white;
+
+        }
+        .eq_btn:active{
+            background-color: orange;
+        }
+
+
+        @media (max-width:718px) {
+            .container{
+                width: 300px;
+                height: 500px;
+            }
+            .btn{
+                width: 20%;
+                height: 65px;
+            }
+            .del_btn{
+                width: 105px;
+                height: 65px;
+            }
+            .eq_btn{
+                width: 105px;
+                height: 65px;
+            }
+            
+        }
+
+        @media (max-width:600px) {
+            .container{
+                width: 300px;
+                height: 500px;
+
+            }
+            .btn{
+                width: 20%;
+                height: 65px;
+            }
+            .del_btn{
+                width: 105px;
+                height: 65px;
+            }
+            .eq_btn{
+                width: 105px;
+                height: 65px;
+            }
+            
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="main">
+            <input style="border-style: inset;border-color: white;border-width: 5px; margin-bottom: 20px;background-color: white; font-size: 35px;" type="text" placeholder="0" id="display" >
+            
+            <div>
+                <input type="button" value="1" class="btn" onclick="appendNum(1)">
+                <input type="button" value="2" class="btn" onclick="appendNum(2)">
+                <input type="button" value="3" class="btn" onclick="appendNum(3)">
+                <input type="button" value="C" class="btn" onclick="_clear()" style="background-color: red;">
+            </div>
+
+            <div>
+                <input type="button" value="4" class="btn" onclick="appendNum(4)">
+                <input type="button" value="5" class="btn" onclick="appendNum(5)">
+                <input type="button" value="6" class="btn" onclick="appendNum(6)">
+                <input type="button" value="+" class="btn" onclick="add()" style="background-color: darkorange;">
+            </div>
+            <div>
+                <input type="button" value="7" class="btn" onclick="appendNum(7)">
+                <input type="button" value="8" class="btn" onclick="appendNum(8)">
+                <input type="button" value="9" class="btn" onclick="appendNum(9)">
+                <input type="button" value="-" class="btn" onclick="minus()" style="background-color: darkorange;">
+            </div>
+            <div>
+                <input type="button" value="." class="btn" onclick="appendNum('.')">
+                <input type="button" value="0" class="btn" onclick="appendNum(0)">
+                <input type="button" value="/" class="btn" onclick="divide()" style="background-color: darkorange;">
+                <input type="button" value="x" class="btn" onclick="multiply()" style="background-color: darkorange;">
+                <div>
+                    <input type="button" value="DEL" class="del_btn" onclick="backspace()" style="background-color: red;">
+                    <input type="button" value="=" class="eq_btn" onclick="equals()" style="background-color: red;" >
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let currentInput = "";
+            let currentOperator = "";
+
+            function appendNum(num) {
+                currentInput += num;
+                document.getElementById('display').value = currentInput;
+                
+            }
+
+
+            function _clear(){
+                currentOperator ="";
+                currentInput="";
+                document.getElementById('display').value = "";
+            }
+
+            function add(){
+
+                const endsWithOperator = /[+\-*/]$/.test(currentInput);
+
+                if (endsWithOperator && /[+\-*/]/.test(num)) {
+                    return;
+                }
+                currentOperator = "+"
+                currentInput += currentOperator;
+                document.getElementById('display').value = currentInput;
+                
+            }
+            function minus(){
+                const endsWithOperator = /[+\-*/]$/.test(currentInput);
+
+                if (endsWithOperator && /[+\-*/]/.test(num)) {
+                    return;
+                }
+                currentOperator = "-"
+                currentInput += currentOperator;
+                document.getElementById('display').value = currentInput;
+                
+            }
+            function multiply(){
+                const endsWithOperator = /[+\-*/]$/.test(currentInput);
+
+                if (endsWithOperator && /[+\-*/]/.test(num)) {
+                    return;
+
+                }
+                currentOperator = "*"
+                currentInput += currentOperator;
+                document.getElementById('display').value = currentInput;
+            }
+
+            function divide(){
+                const endsWithOperator = /[+\-*/]$/.test(currentInput);
+
+                if (endsWithOperator && /[+\-*/]/.test(num)) {
+                    return;
+                }
+                currentOperator = "/"
+                currentInput += currentOperator;
+                document.getElementById('display').value = currentInput;
+                
+            }
+
+            function equals(){
+                const display= eval(currentInput);
+                document.getElementById('display').value = display;
+                currentOperator ="";
+                currentInput=display.toString();
+            }
+
+            function backspace(){
+                display.value = display.value.toString().slice(0,-1)
+            }
+
+            
+        </script>
+        </div>
+</body>
+</html>
